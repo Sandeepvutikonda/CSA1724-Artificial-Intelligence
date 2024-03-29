@@ -1,0 +1,30 @@
+% Facts
+person(john, date(1990, 5, 15)).
+person(amy, date(1985, 10, 25)).
+person(mike, date(1978, 3, 8)).
+person(lisa, date(1995, 12, 20)).
+
+% Rules
+current_year(2024).
+
+% Predicates
+age(Name, Age) :-
+    person(Name, date(Year, _, _)),
+    current_year(CurrentYear),
+    Age is CurrentYear - Year.
+
+% Example Queries
+% Query to find the age of a person
+% ?- age(john, Age).
+% Age = 34
+%
+% Query to find individuals born in a specific year
+% ?- person(Name, date(1990, _, _)).
+% Name = john
+%
+% Query to find all individuals with their ages
+% ?- age(Name, Age).
+% Name = john, Age = 34 ;
+% Name = amy, Age = 39 ;
+% Name = mike, Age = 46 ;
+% Name = lisa, Age = 29.
